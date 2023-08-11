@@ -12,6 +12,7 @@ Go to your WordPress plugin directory and open it in the terminal then run: `com
 
 To use BatchPress create a new class per job and include your job file in the main plugin file then register those your job classes using the `add_filter('batchpress/jobs', fn() => [YourJobClass::class]);` filter.
 
+In `includes` folder i have created my `find-product-posts` job you can reuse it.
 Job class outline:
 
 - Required: `label` property to describe the job.
