@@ -3,20 +3,20 @@
 ## ℹ️ I will update this readme as soon as possible
 
 BatchPress is a little plugin to help process data in batches, with BatchPress you can run, monitor and cancel batched jobs.
-
-Install: `composer require lambry/batchpress`
+Make sure you have installed Composer on your system
+Go to your WordPress plugin directory and open it in the terminal then run: `composer require lambry/batchpress`
 
 ![screenshot](screenshot.png)
 
 ## Usage
 
-To use BatchPress create a new class per job and register those classes using the `batchpress/jobs` filter.
+To use BatchPress create a new class per job and include your job file in the main plugin file then register those your job classes using the `add_filter('batchpress/jobs', fn() => [YourJobClass::class]);` filter.
 
 Job class outline:
 
 - Required: `label` property to describe the job.
 - Required: `process` method which is passed a single item for processing; any info/errors can be returned and will be displayed in the log.
-- Optional|Required: `items` method is optional if the upload property is set to true, in this case it can be used to filter the uploaded content before staring the job. If upload if false or not defined the method is then required to return an array of items for processing.
+- Optional|Required: `items` method is optional if the upload property is set to true, in this case, it can be used to filter the uploaded content before starting the job if upload if false or not defined the method is then required to return an array of items for processing.
 - Optional: `upload` property to tell BatchPress if a CSV upload is required.
 - Optional: `batch` property to set the number of items to process per batch.
 - Optional: `description` property to provide extra details about the job.
